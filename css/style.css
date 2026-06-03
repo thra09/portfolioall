@@ -216,7 +216,7 @@ a, button, .skill-tag {
 }
 
 /* 하단 인포 */
-.hero-footer {
+.main-footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
