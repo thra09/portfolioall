@@ -1,0 +1,445 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('../fonts/SCDream6.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.eot);
+    src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.eot?#iefix) format("embedded-opentype"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff) format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.ttf) format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+a, button, .skill-tag {
+    cursor: default; 
+}
+
+.gooey-cursor-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background-color: transparent;
+}
+
+
+.cursor-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fae887; 
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    /* mix-blend-mode: screen;  */
+}
+
+
+
+.main-screen {
+    background-image: url('../img/mainbg.jpg' );
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5%;
+    
+    background-color: transparent; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    
+
+    transition: background-color 0.4s ease, border-color 0.4s ease, padding 0.4s ease; 
+}
+
+.logo { color: #ffffff; transition: color 0.4s ease; }
+.nav a { color: #ffffff; transition: color 0.4s ease; }
+
+
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px 5%; 
+}
+
+
+.header.scrolled .logo {
+    color: #1a1a1a;
+}
+.header.scrolled .nav a {
+    color: #1a1a1a;
+}
+.header.scrolled .nav a:hover {
+    color:#4347a3;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-left: 60px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color:#fae887;
+}
+
+/* 서브텍스트 */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.main-content {
+    text-align: center;
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.badge-tag {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    padding: 15px 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+/* 메인텍스트 */
+.main-title {  
+    position: relative; 
+    z-index: 2;
+    font-size: 7.5vw;
+    font-weight: 900;
+    line-height: 1.0;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "MuseoModerno", sans-serif;
+    width: max-content; 
+    margin: 0 auto; 
+}
+
+.main-title .row-1,
+.main-title .row-2 {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.yellow { color: #fae887; }
+.white { color: #ffffff; }
+
+/* 회전 원형 텍스트 */
+.circle-text-wrap {
+    position: absolute;
+    z-index: -1; 
+    right: -110px; 
+    top: -35px;
+    transform: none;
+    width: 140px;
+    height: 140px;
+    animation: rotateCircle 20s linear infinite;
+}
+
+.circle-svg { width: 100%; height: 100%; }
+.circle-svg path { fill: none; }
+.circle-svg text {
+    fill: #fae887;
+    font-family: 'SCDream', 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@keyframes rotateCircle {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 하단 인포 */
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 40px 5%;
+}
+
+.footer-left { display: flex; gap: 50px; }
+.info-block {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.info-block strong { color: #ffffff; margin-bottom: 4px; }
+
+.footer-right { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.skill-tag {
+    border: 0.5px solid #fff;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    
+    background: linear-gradient(to top, #ffffff 50%,50%);
+    background-size: 100% 200%;
+    background-position: bottom;
+    
+    transition: background-position 0.4s ease, 
+                color 0.3s ease, 
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+    
+    cursor: default;
+}
+
+.skill-tag:hover {
+    color: #4549a6;
+    background-color: #fff;
+    background-position: top;
+    border-color: #ffffff;
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+}
+
+
+/* page 2 */
+.project-section {
+    padding: 100px 5%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.project-wrap {
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    gap: 60px;
+    border-top: 1px solid #e1e1e1; 
+    padding-top: 50px;
+}
+
+.project-info {
+    flex: 1;
+    max-width: 320px;
+}
+
+.sub-year {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #b5b5b5;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+}
+
+.section-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #666666;
+    word-break: keep-all; 
+}
+
+/* 포트폴리오 이미지 */
+.project-grid {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+.project-card {
+    position: relative;
+    height: 520px; 
+    background-color: #eee;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+.second-project .card-content * {
+    color: #949494;
+    transition: color 0.3s ease; 
+}
+
+.second-project:hover .card-content * {
+    color: #c36d78;
+}
+
+
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%); 
+    transition: filter 0.5s ease, transform 0.5s ease;
+    z-index: 1;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2; 
+    color: #ffffff;
+}
+
+.card-num {
+    font-family: 'NanumSquareNeoExtraBold', 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.card-sub {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.project-card:hover .card-bg {
+    filter: grayscale(0%);
+    transform: scale(1.03); 
+}
+
+
+/* footer */
+.site-footer {
+    padding: 30px 5%;
+    border-top: 1px solid #f0f0f0;
+    background-color: #ffffff;
+}
+
+.footer-wrap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #999999;
+}
+
+
+
+@media (max-width: 1024px) {
+    .project-wrap {
+        flex-direction: column; 
+        gap: 40px;
+    }
+    .project-info {
+        max-width: 100%;
+    }
+    .project-card {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header { padding: 20px; }
+    .nav a { margin-left: 15px; font-size: 0.8rem; }
+
+    .main-title { font-size: 3.5rem; letter-spacing: -1px; }
+
+    .circle-text-wrap {
+        position: relative; right: auto; top: auto;
+        margin: 20px auto 0 auto; width: 100px; height: 100px;
+    }
+
+    .main-footer {
+        flex-direction: column; align-items: flex-start; gap: 30px; padding: 40px 20px;
+    }
+    .footer-left { gap: 30px; }
+    .footer-right { width: 100%; }
+
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .project-card {
+        height: 380px;
+    }
+}
