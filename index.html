@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH PORTFOLIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="gooey-cursor-container">
+        <div class="cursor-dot"></div>
+        <div class="cursor-dot"></div>
+        <div class="cursor-dot"></div>
+        <div class="cursor-dot"></div>
+        <div class="cursor-dot"></div>
+        <div class="cursor-dot"></div>
+    </div>
+
+    <div class="main-screen">
+        <header class="header">
+            <div class="logo">HEE</div>
+            <nav class="nav">
+                <a href="#about">ABOUT</a>
+                <a href="#project">PROJECT</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </header>
+
+        <main id="about" class="hero-container">
+            <div class="hero-content">
+                <div class="badge-tag">• HYCU PROJECT •</div>
+                <h1 class="main-title">
+                    <span class="row-1"><span class="yellow">UXUI</span><span class="white">DESIGN</span></span>
+                    <span class="row-2"><span class="white">PORT</span><span class="yellow">FOLIO</span></span>
+                    <div class="circle-text-wrap">
+                        <svg viewBox="0 0 100 100" class="circle-svg">
+                            <path id="circlePath" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+                            <text>
+                                <textPath href="#circlePath">
+                                    DESIGNS PROJECT · UI/UX WEB DESIGNER · 
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                </h1>
+            </div>
+        </main>
+
+        <div class="hero-footer">
+            <div class="footer-left">
+                <div class="info-block">
+                    <strong>EUNCHOHEE</strong>
+                    <span>WEB DESIGN</span>
+                    <span>PORTFOLIO</span>
+                </div>
+                <div class="info-block">
+                    <strong>DESIGNER</strong>
+                    <span>THINK</span>
+                    <span>CREATE</span>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <span class="skill-tag">UI/UX</span>
+                <span class="skill-tag">Photoshop</span>
+                <span class="skill-tag">Illustration</span>
+                <span class="skill-tag">Premiere Pro</span>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="project" class="project-section">
+        <div class="project-wrap">
+            
+            <div class="project-info">
+                <span class="sub-year">2026 WORKS</span>
+                <h2 class="section-title">WEB<br>DESIGN<br>PROJECTS</h2>
+                <p class="section-desc">
+                    수업을 통해 학습한 내용을 바탕으로 제작한 프로젝트입니다. 
+                    학습 과정에서 익힌 기술과 개념을 활용하여 기획하고 구현하였습니다.
+                </p>
+            </div>
+
+            <div class="project-grid">
+                <a href="https://thra09.github.io/hycu_project_01/" target="_blank" class="project-card">
+                    <div class="card-bg" style="background-image: url('./img/project01.jpg');"></div>
+                    <div class="card-content">
+                        <span class="card-num">01</span>
+                        <h3 class="card-title">First project</h3>
+                        <p class="card-sub">Book Overview</p>
+                    </div>
+                </a>
+
+                <a href="https://thra09.github.io/hycu_project_02/" target="_blank" class="project-card second-project">
+                    <div class="card-bg" style="background-image: url('./img/project02.jpg');"></div>
+                    <div class="card-content">
+                        <span class="card-num">02</span>
+                        <h3 class="card-title">Second Project</h3>
+                        <p class="card-sub">Character Profiles</p>
+                    </div>
+                </a>
+
+                <a href="https://thra09.github.io/hycu_project_03/" target="_blank" class="project-card">
+                    <div class="card-bg" style="background-image: url('./img/project03.jpg');"></div>
+                    <div class="card-content">
+                        <span class="card-num">03</span>
+                        <h3 class="card-title">Third Project</h3>
+                        <p class="card-sub">Web Design</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="site-footer">
+        <div class="footer-wrap">
+            <span class="copyright-left">HYCU Web Design Class Portfolio</span>
+            <span class="copyright-right">All rights reserved © CH</span>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+   
+        const dots = document.querySelectorAll('.cursor-dot');
+        const dotData = Array.from(dots).map(() => ({ x: 0, y: 0 }));
+        
+        let mouseX = 0;
+        let mouseY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGooeyCursor() {
+            dotData[0].x += (mouseX - dotData[0].x) * 0.3;
+            dotData[0].y += (mouseY - dotData[0].y) * 0.3;
+            
+            for (let i = 1; i < dotData.length; i++) {
+                dotData[i].x += (dotData[i-1].x - dotData[i].x) * 0.25;
+                dotData[i].y += (dotData[i-1].y - dotData[i].y) * 0.25;
+            }
+
+            dots.forEach((dot, index) => {
+                dot.style.left = `${dotData[index].x}px`;
+                dot.style.top = `${dotData[index].y}px`;
+                
+
+                const scaleValue = 1 - (index * 0.15); 
+                dot.style.transform = `translate(-50%, -50%) scale(${scaleValue})`;
+                dot.style.transform = `translate(-50%, -50%) scale(${scaleValue})`;
+            });
+
+            requestAnimationFrame(animateGooeyCursor);
+        }
+
+        animateGooeyCursor();
+    </script>
+
+</body>
+</html>
